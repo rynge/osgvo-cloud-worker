@@ -1,0 +1,6 @@
+
+SHELL=/bin/bash
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
+ */10 *  * * *  root sleep $(expr $RANDOM \% 60); timeout 8m salt-call --local state.highstate >/var/log/salt-highstate.log 2>&1
+
