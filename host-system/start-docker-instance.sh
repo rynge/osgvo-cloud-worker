@@ -1,0 +1,9 @@
+
+docker pull rynge/osgvo-cloud-worker:latest
+
+docker run -it --rm --user osg \
+       --cap-add=DAC_OVERRIDE --cap-add=SETUID --cap-add=SETGID \
+       --cap-add=SYS_ADMIN --cap-add=SYS_CHROOT --cap-add=SYS_PTRACE \
+       -v /cvmfs:/cvmfs -v /etc/osg-worker.conf:/etc/osg-worker.conf \
+       rynge/osgvo-cloud-worker:latest
+
