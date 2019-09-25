@@ -13,5 +13,6 @@ ln -s /opt/osgvo-cloud-worker/host-system/salt /srv/salt
 echo "file_client: local" >/etc/salt/minion.d/50-osg-cloud-worker.conf
 
 salt-call --local state.apply
+salt-call --local state.apply
 
 
