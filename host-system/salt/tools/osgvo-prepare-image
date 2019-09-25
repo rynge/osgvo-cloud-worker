@@ -1,4 +1,5 @@
 #!/bin/bash
 
 rm -f /etc/osg-worker.conf
+rm -f /etc/atmo/instance-scripts-available/*
 
