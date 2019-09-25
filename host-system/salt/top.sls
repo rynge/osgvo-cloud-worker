@@ -1,4 +1,6 @@
 base:
   '*':
     - salt
+    - autofs
+    - osg
 

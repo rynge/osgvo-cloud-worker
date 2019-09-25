@@ -15,6 +15,7 @@ RUN useradd osg \
 
 COPY entrypoint.sh /bin/
 COPY 50-main.config /etc/condor/config.d/
+RUN chmod 755 /bin/entrypoint.sh
  
 RUN chown -R osg: ~osg 
 
