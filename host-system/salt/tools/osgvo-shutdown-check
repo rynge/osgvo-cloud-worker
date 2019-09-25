@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# ignore shutdown in the beginning of the uptime - let's the system settle down
+UPTIME=`cat /proc/uptime | sed 's/[\. ].*//'`
+if [ $UPTIME -lt 300 ]; then
+    exit 0
+fi
+
+COUNT=`docker ps -q | wc -l`
+if [ $COUNT -gt 0 ]; then
+    echo "$COUNT containers are running. Not shutting down"
+else
+    echo "No containers are running. Shutting down node due to lack of work!"
+    /sbin/shutdown -h now
+fi
+exit 0
+

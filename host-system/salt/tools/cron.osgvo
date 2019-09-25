@@ -1,0 +1,6 @@
+
+SHELL=/bin/bash
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
+ * * * * *  root  /usr/bin/osgvo-shutdown-check >/var/log/osgvo-shutdown-check.log 2>&1
+

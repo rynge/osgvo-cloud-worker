@@ -4,4 +4,5 @@ base:
     - base
     - autofs
     - osg
+    - tools
 

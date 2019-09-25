@@ -1,3 +1,4 @@
+#!/bin/bash
 
 docker pull rynge/osgvo-cloud-worker:latest
 
