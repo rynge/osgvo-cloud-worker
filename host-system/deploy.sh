@@ -5,7 +5,6 @@ cd /opt
 git clone https://github.com/rynge/osgvo-cloud-worker.git
 
 # install salt
-curl -L https://bootstrap.saltstack.com | bash -
 cat >/etc/yum.repos.d/saltstack.repo <<EOF
 [saltstack]
 name=SaltStack latest Release Channel for RHEL/CentOS \$releasever
