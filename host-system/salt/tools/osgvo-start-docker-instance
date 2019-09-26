@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# only start one when the container starts
+UPTIME=`cat /proc/uptime | sed 's/[\. ].*//'`
+if [ $UPTIME -gt 300 ]; then
+    echo "VM has run for too long to start new containers"
+    exit 0
+fi
+
+COUNT=`docker ps -q | wc -l`
+if [ $COUNT -gt 0 ]; then
+    echo "$COUNT containers are running. Not doing anything."
+    exit 0
+fi
+
+if [ ! -e /etc/osg-worker.conf ]; then
+    echo "/etc/osg-worker.conf does not exist yet"
+    exit 0
+fi
+
+echo "No containers are running. Starting a new one"
+
 docker pull rynge/osgvo-cloud-worker:latest
 
 docker run -it --rm --user osg \

@@ -13,7 +13,6 @@ OSG_WORKER_NAME = Test Worker
 TOKEN = fobar
 START = TARGET.ProjectName == "OSG-STAFF"
 EOF
-/usr/bin/osgvo-start-docker-instance
 ```
 
 ## Deploy
