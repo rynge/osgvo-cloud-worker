@@ -2,7 +2,7 @@
 
 # only start one when the container starts
 UPTIME=`cat /proc/uptime | sed 's/[\. ].*//'`
-if [ $UPTIME -gt 300 ]; then
+if [ $UPTIME -gt 600 ]; then
     echo "VM has run for too long to start new containers"
     exit 0
 fi
@@ -22,7 +22,7 @@ echo "No containers are running. Starting a new one"
 
 docker pull rynge/osgvo-cloud-worker:latest
 
-docker run -it --rm --user osg \
+docker run --rm --user osg \
        --cap-add=DAC_OVERRIDE --cap-add=SETUID --cap-add=SETGID \
        --cap-add=SYS_ADMIN --cap-add=SYS_CHROOT --cap-add=SYS_PTRACE \
        -v /cvmfs:/cvmfs -v /etc/osg-worker.conf:/etc/osg-worker.conf \
