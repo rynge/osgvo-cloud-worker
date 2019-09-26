@@ -20,6 +20,29 @@ fi
 
 echo "No containers are running. Starting a new one"
 
+# ensure CVMFS filesystems are mounted
+for FS in \
+       ams.cern.ch \
+       atlas.cern.ch \
+       cms.cern.ch \
+       connect.opensciencegrid.org \
+       desdm.osgstorage.org \
+       gwosc.osgstorage.org \
+       icecube.opensciencegrid.org \
+       ligo-containers.opensciencegrid.org \
+       nexo.opensciencegrid.org \
+       oasis.opensciencegrid.org \
+       singularity.opensciencegrid.org \
+       snoplus.egi.eu \
+       spt.opensciencegrid.org \
+       stash.osgstorage.org \
+       veritas.opensciencegrid.org \
+       xenon.opensciencegrid.org \
+       sw.lsst.eu \
+ ; do
+	ls -l /cvmfs/$FS/ >/dev/null 2>&1
+done
+
 docker pull rynge/osgvo-cloud-worker:latest
 
 docker run --rm --user osg \
