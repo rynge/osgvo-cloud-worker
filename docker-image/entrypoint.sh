@@ -21,12 +21,13 @@ mkdir -p `condor_config_val SPOOL`
 
 # token auth
 mkdir -p ~/.condor/tokens.d
-get_config_value TOKEN >~/.condor/tokens.d/flock.opensciencegrid.org
+get_config_value Token >~/.condor/tokens.d/flock.opensciencegrid.org
 chmod 600 ~/.condor/tokens.d/flock.opensciencegrid.org
 
 # start expression to limit what jobs we are running
 rm ~/.condor/user_config
-echo "START = "`get_config_value START` >>~/.condor/user_config
+echo "START = "`get_config_value Start` >>~/.condor/user_config
+echo "WorkerGroupName = \""`get_config_value WorkerGroupName`"\"" >>~/.condor/user_config
 
 tail -F `condor_config_val LOG`/MasterLog `condor_config_val LOG`/StartLog &
 

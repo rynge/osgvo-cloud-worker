@@ -2,7 +2,7 @@
 
 # only start one when the container starts
 UPTIME=`cat /proc/uptime | sed 's/[\. ].*//'`
-if [ $UPTIME -gt 600 ]; then
+if [ $UPTIME -gt 900 ]; then
     echo "VM has run for too long to start new containers"
     exit 0
 fi
