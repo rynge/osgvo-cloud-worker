@@ -3,3 +3,5 @@
 rm -f /etc/osg-worker.conf
 rm -f /etc/atmo/instance-scripts-available/*
 
+docker container prune -f
+
