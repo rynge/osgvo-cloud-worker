@@ -2,6 +2,6 @@
 SHELL=/bin/bash
 PATH=/usr/sbin:/usr/bin:/sbin:/bin
 
- */2 * * * *  root  /usr/bin/osgvo-start-docker-instance >/var/log/osgvo-start-docker-instance.log 2>&1
- */2 * * * *  root  /usr/bin/osgvo-shutdown-check >/var/log/osgvo-shutdown-check.log 2>&1
+ */2 * * * *  root  /usr/bin/osgvo-start-docker-instance 2>&1 | logger --tag osgvo-start
+ */2 * * * *  root  /usr/bin/osgvo-shutdown-check 2>&1 | logger --tag osgvo-shutdown
 
