@@ -4,7 +4,6 @@ LOCKFILE=/tmp/osgvo-start-docker-instance.pid
 if [ -e "$LOCKFILE" ]; then
     PID=`cat $LOCKFILE`
     if kill -0 $PID >/dev/null 2>&1; then
-        echo "Lock file exists. A process with $PID is already running."
         exit 0
     fi
 fi
