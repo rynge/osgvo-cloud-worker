@@ -30,10 +30,10 @@ using your XSEDE credentials. Create a project for your OSG instances, and click
 `New` button, and select `Instance`. In the image search interface, select the
 `Show All` tab and search for `OSG Cloud Worker`. The result should look something like:
 
-![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jetstream-image-find.png)
+![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-image-find.png)
 
 
-![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch.png)
+![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch.png)
 
 When starting the image, add a startup script via the launch web interface like:
 
@@ -46,7 +46,7 @@ Start = TARGET.ProjectName == "TG-NNNNNN"
 EOF
 ```
 
-![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch-advanced.png)
+![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch-advanced.png)
 
 ## Monitoring
 
