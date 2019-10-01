@@ -10,8 +10,30 @@ An OSG VO worker node for cloud deployments
 
 ## Warning About Shutdown State
 
+These images are set to auto-shutdown if there are no matching jobs for 
+some time (currently 25 minutes). When this happens the images in JetStream 
+goes into the `Shutdown` state, but please note that you are still charged
+for instances in this state, at 50% the regular charge. To stop this charging
+of SUs, please log in to Atmoshere and `Delete` the instances. Please see:
+[JetStream Documentation](https://iujetstream.atlassian.net/wiki/spaces/JWT/pages/537460754/Instance+management+actions)
+for more information.
 
 ## Starting Instances on JetStream
+
+To get started, you first need to obtain a token so that the instances can 
+authenticate with the OSG VO central manager (flock.opensciencegrid.org). To obtain
+the token, ask for one by open a ticket with support@osgconnect.net . Tokens will
+only be provided to users who have OSGConnect accounts or XSEDE allocations.
+
+Once you have a token, log in to the [JetStream Atmosphere interface](https://use.jetstream-cloud.org/)
+using your XSEDE credentials. Create a project for your OSG instances, and click the
+`New` button, and select `Instance`. In the image search interface, select the
+`Show All` tab and search for `OSG Cloud Worker`. The result should look something like:
+
+![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jetstream-image-find.png)
+
+
+![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch.png)
 
 When starting the image, add a startup script via the launch web interface like:
 
@@ -20,9 +42,11 @@ When starting the image, add a startup script via the launch web interface like:
 cat >/etc/osg-worker.conf <<EOF
 WorkerGroupName = My Test Workers
 Token = aaabbb...
-Start = TARGET.ProjectName == "OSG-Staff"
+Start = TARGET.ProjectName == "TG-NNNNNN"
 EOF
 ```
+
+![JetStream image find](rhttps://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jestream-instance-launch-advanced.png)
 
 ## Monitoring
 
