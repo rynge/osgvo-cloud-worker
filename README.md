@@ -2,7 +2,16 @@
 
 An OSG VO worker node for cloud deployments
 
-## Atmosphere
+ * [Warning About Shutdown State](#warning-about-shutdown-state)
+ * [Starting Instances on JetStream](#starting-instances-on-jetStream)
+ * [Monitoring](#monitoring)
+ * [Advanced: Setting Up an Image](#advanced-setting-up-an-image)
+
+
+## Warning About Shutdown State
+
+
+## Starting Instances on JetStream
 
 When starting the image, add a startup script via the launch web interface like:
 
@@ -21,7 +30,9 @@ EOF
 condor_status -pool flock.opensciencegrid.org -const 'WorkerGroupName == "My Test Workers"'
 ```
 
-## Deploy
+## Advanced: Setting Up an Image
+
+CentOS 7
 
 ```
 curl -L https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/host-system/deploy.sh | bash -
