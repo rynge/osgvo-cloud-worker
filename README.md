@@ -32,10 +32,20 @@ using your XSEDE credentials. Create a project for your OSG instances, and click
 
 ![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jetstream-find-image.png)
 
+Select allocation source and instance size:
 
 ![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jetstream-instance-launch.png)
 
-When starting the image, add a startup script via the launch web interface like:
+Click `Advanced Options`. The first time you start an instance, you have to add a
+deployment script. We use this to configure the instance. Once the script has been
+added, you can just select it over and over again for new instances.
+
+Add the script as `Raw Text`. Copy and paste the following, and update the settings. At 
+a minimum, you have to provide the token (provided by OSG staff as described above), and
+set a `Start` expression, which should limit the instance to only run your own jobs. Most
+of the time, you can do this by specifying your `ProjectName`, as in the example. You
+may also update the `WorkerGroupName` to something unique, as that makes it easier to 
+find you instances in the OSG collector.
 
 ```
 #!/bin/bash
@@ -48,7 +58,12 @@ EOF
 
 ![JetStream image find](https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/images/jetstream-instance-launch-advanced.png)
 
+Start the instance and wait for it to boot.
+
 ## Monitoring
+
+Once an instance has booted, you can query `flock.opensciencegrid.org` to see if it the instance
+is there. Query using the `WorkerGroupName` string from the deployment script. Example:
 
 ```
 condor_status -pool flock.opensciencegrid.org -const 'WorkerGroupName == "My Test Workers"'
@@ -56,7 +71,9 @@ condor_status -pool flock.opensciencegrid.org -const 'WorkerGroupName == "My Tes
 
 ## Advanced: Setting Up an Image
 
-CentOS 7
+So far, this document has described the JetStream usecase. However, the code should be usable on 
+other clouds as well, providing there is a way to inject the `/etc/osg-worker.conf` file. To set
+up the image, start with a CentOS 7 base image, and run:
 
 ```
 curl -L https://raw.githubusercontent.com/rynge/osgvo-cloud-worker/master/host-system/deploy.sh | bash -
